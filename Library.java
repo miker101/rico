@@ -63,7 +63,7 @@ public class Library {
             System.out.print("Enter your choice: ");
 
             if (!input.hasNextInt()) {
-                System.out.println("⚠️ Please enter a number.");
+                System.out.println("Please enter a number.");
                 input.nextLine();
                 continue;
             }
@@ -117,12 +117,12 @@ public class Library {
 
         Book book = books.get(isbn);
         if (book.isBorrowed) {
-            System.out.println("⚠️ Book already borrowed by " + book.borrowedBy);
+            System.out.println("Book already borrowed by " + book.borrowedBy);
         } else {
             book.isBorrowed = true;
             book.borrowedBy = studentId;
             history.push("Borrowed: " + book.title + " by " + studentId);
-            System.out.println("✅ Book '" + book.title + "' successfully borrowed by " + studentId);
+            System.out.println("Book '" + book.title + "' successfully borrowed by " + studentId);
         }
     }
 
@@ -132,16 +132,16 @@ public class Library {
         String isbn = input.nextLine().trim();
 
         if (!books.containsKey(isbn)) {
-            System.out.println("❌ Book not found in library.");
+            System.out.println(" Book not found in library.");
             return;
         }
 
         Book book = books.get(isbn);
         if (!book.isBorrowed) {
-            System.out.println("⚠️ Book is already available in the library.");
+            System.out.println(" Book is already available in the library.");
         } else {
             history.push("Returned: " + book.title + " by " + book.borrowedBy);
-            System.out.println("✅ Book '" + book.title + "' returned by " + book.borrowedBy);
+            System.out.println(" Book '" + book.title + "' returned by " + book.borrowedBy);
             book.isBorrowed = false;
             book.borrowedBy = null;
         }
@@ -149,7 +149,7 @@ public class Library {
 
     // 📚 Show all available books
     private void showAvailableBooks() {
-        System.out.println("\n📘 AVAILABLE BOOKS:");
+        System.out.println("\n AVAILABLE BOOKS:");
         for (Book book : books.values()) {
             if (!book.isBorrowed) {
                 System.out.println(book);
@@ -159,7 +159,7 @@ public class Library {
 
     // 📕 Show borrowed books and who borrowed them
     private void showBorrowedBooks() {
-        System.out.println("\n📕 BORROWED BOOKS:");
+        System.out.println("\nBORROWED BOOKS:");
         boolean found = false;
         for (Book book : books.values()) {
             if (book.isBorrowed) {
@@ -168,7 +168,7 @@ public class Library {
             }
         }
         if (!found) {
-            System.out.println("✅ No borrowed books right now.");
+            System.out.println(" No borrowed books right now.");
         }
     }
 
@@ -215,3 +215,4 @@ public class Library {
         }
     }
 }
+
